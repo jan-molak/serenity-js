@@ -36,5 +36,5 @@
     "@angular-devkit/schematics": ">=0.800.0",
     "@types/mocha": "5.2.7"
   },
-  "schematics": "schematics/collection.json"
+  "schematics": "./schematics/collection.json"
 }
