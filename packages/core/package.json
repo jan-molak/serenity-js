@@ -28,15 +28,9 @@
   "scripts": {
     "clean": "rimraf .nyc_output lib target",
     "lint": "tslint --project tsconfig-lint.json --config ../../tslint.json --format stylish",
-    "test:lib": "nyc --report-dir ../../target/coverage/core mocha --config ../../.mocharc.yml 'spec/**/*.spec.*'",
-    "test:schematics": "nyc --report-dir ../../target/coverage/core env TS_NODE_PROJECT='./tsconfig.schematics.json' mocha --config ../../.mocharc.yml './schematics/**/*.spec.ts'",
-    "test": "npm run test:lib && npm run test:schematics",
-    "compile": "tsc --project tsconfig.json && node ./schematics/tools/build-schemas.js && tsc --project tsconfig.schematics.json",
-    "site": "esdoc -c .esdoc.js",
-    "copy:schemas": "cp --parents schematics/*/schema.json ./lib/",
-    "copy:files": "cp -r --parents schematics/*/files/** ./lib/",
-    "copy:collection": "cp schematics/collection.json ./lib/schematics/collection.json",
-    "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
+    "test": "nyc --report-dir ../../target/coverage/core mocha --config ../../.mocharc.yml 'spec/**/*.spec.*'",
+    "compile": "tsc --project tsconfig.json",
+    "site": "esdoc -c .esdoc.js"
   },
   "dependencies": {
     "cuid": "^2.1.8",
@@ -57,11 +51,6 @@
     "@types/mocha": "^8.0.0",
     "@types/semver": "^7.2.0",
     "memfs": "^3.2.0"
-  },
-  "optionalDependencies": {
-    "@angular/cli": ">=8.0.0",
-    "@angular-devkit/schematics-cli": ">=0.800.0",
-    "@angular-devkit/schematics": ">=0.800.0"
   },
   "repository": {
     "type": "git",
@@ -95,6 +84,5 @@
     ],
     "cache": true,
     "all": true
-  },
-  "schematics": "./schematics/collection.json"
+  }
 }

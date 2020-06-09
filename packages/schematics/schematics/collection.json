@@ -4,10 +4,6 @@
       "ng-add": {
         "description": "Add serenity-js to the angular project.",
         "factory": "./ng-add/index#ngAdd"
-      },
-      "add": {
-        "description": "Add serenity-js to the project.",
-        "factory": "./ng-add/index#ngAdd"
       }
     }
   } 

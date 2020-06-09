@@ -7,7 +7,7 @@ import { expect } from 'chai';
 
 // tslint:disable: no-unused-expression
 describe('Angular CLI Schematic', () => {
-    const testRunner = new SchematicTestRunner('@serenity-js/core', require.resolve('../../schematics/collection.json'));
+    const testRunner = new SchematicTestRunner('@serenity-js/schematics', require.resolve('../collection.json'));
     let appTree: UnitTestTree
 
     beforeEach(async () => {
