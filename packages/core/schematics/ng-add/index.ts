@@ -148,7 +148,7 @@ function updateAngularWorkspace(options: SerenityJsAddOptions): Rule {
 export function ngAdd(options: SerenityJsAddOptions): Rule {
     const defaultOptions = {
         project: '.',
-        directory: 'feature',
+        directory: 'features',
         browserIntegrationFramework: 'protractor',
         testFramework: 'cucumber' };
     const effectiveOptions = { ...defaultOptions, ...options };
