@@ -1,7 +1,7 @@
 {
   "name": "@serenity-js/schematics",
-  "version": "2.7.0",
-  "description": "Angular schematics for serenity-js",
+  "version": "2.16.0",
+  "description": "Angular schematics for Serenity/JS",
   "scripts": {
     "precompile": "rimraf lib",
     "compile": "node schematics/tools/build-schemas.js && tsc --project tsconfig.json",
@@ -9,7 +9,7 @@
     "copy:files": "cp -r --parents schematics/*/files/** ./lib/ && cd ..",
     "copy:collection": "cp schematics/collection.json ./lib/schematics/collection.json",
     "postcompile": "npm run copy:schemas && npm run copy:files && npm run copy:collection",
-    "test": "nyc --report-dir ../../target/coverage/schematics env TS_NODE_PROJECT='./tsconfig.spec.json' mocha --config ../../.mocharc.yml './schematics/**/*.spec.ts'"
+    "test": "nyc --report-dir ../../target/coverage/schematics mocha --config ../../.mocharc.yml 'spec/**/*.spec.ts'"
 
   },
   "repository": {
@@ -29,12 +29,41 @@
   "bugs": {
     "url": "https://github.com/serenity-js/serenity-js/issues"
   },
-  "homepage": "https://github.com/serenity-js/serenity-js#readme",
+  "homepage": "https://serenity-js.org",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@angular/cli": ">=8.0.0",
     "@angular-devkit/schematics-cli": ">=0.800.0",
     "@angular-devkit/schematics": ">=0.800.0",
-    "@types/mocha": "5.2.7"
+    "@types/mocha": "^8.0.0"
   },
-  "schematics": "./schematics/collection.json"
+  "peerDependencies": {
+    "@angular-devkit/core": ">=8.0.0",
+    "@angular-devkit/schematics": ">=0.800.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "nyc": {
+    "include": [
+      "schematics/**/*.ts"
+    ],
+    "exclude": [
+      "schematics/**/*.d.ts",
+      "lib",
+      "node_modules",
+      "spec"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json"
+    ],
+    "cache": true,
+    "all": true
+  }
 }

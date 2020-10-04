@@ -1,13 +1,11 @@
-// tslint:disable: no-implicit-dependencies
 import { experimental } from '@angular-devkit/core';
 // tslint:disable-next-line: no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { expect } from 'chai';
-// tslint:enable: no-implicit-dependencies
 
 // tslint:disable: no-unused-expression
 describe('Angular CLI Schematic', () => {
-    const testRunner = new SchematicTestRunner('@serenity-js/schematics', require.resolve('../collection.json'));
+    const testRunner = new SchematicTestRunner('@serenity-js/schematics', require.resolve('../../schematics/collection.json'));
     let appTree: UnitTestTree
 
     beforeEach(async () => {
@@ -30,7 +28,7 @@ describe('Angular CLI Schematic', () => {
 
     it('scaffolds the creation of actors in the default project', async () => {
         const tree = await testRunner.runSchematicAsync('ng-add', {}, appTree).toPromise();
-        expect(tree.exists('projects/defaultApp/features/screenplay/actors.ts')).to.be.true;
+        expect(tree.exists('/projects/default-app/features/screenplay/actors.ts')).to.be.true;
     });
 
     it('adds the dev dependencies for protractor to the default project by default', async () => {
@@ -50,34 +48,34 @@ describe('Angular CLI Schematic', () => {
 
     it('adds the protractor config file to the e2e test config of the default project', async () => {
         const tree = await testRunner.runSchematicAsync('ng-add', {}, appTree).toPromise();
-        const ptrConf = tree.readContent('projects/defaultApp/features/protractor.conf.js');
+        const ptrConf = tree.readContent('/projects/default-app/features/protractor.conf.js');
         expect(ptrConf.includes('serenity: ')).to.be.true;
     });
 
     it('adds the protractor config file to the e2e test config of the specified project', async () => {
         const options = { project: 'testApp' };
         const tree = await testRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
-        const ptrConf = tree.readContent('projects/testApp/features/protractor.conf.js');
+        const ptrConf = tree.readContent('/projects/test-app/features/protractor.conf.js');
         expect(ptrConf.includes('serenity: ')).to.be.true;
     });
 
     it('adds the cucumber configuration to the protractor config in the default project', async () => {
         const tree = await testRunner.runSchematicAsync('ng-add', {}, appTree).toPromise();
-        const ptrConf = tree.readContent('projects/defaultApp/features/protractor.conf.js');
+        const ptrConf = tree.readContent('/projects/default-app/features/protractor.conf.js');
         expect(ptrConf.includes('cucumberOpts: ')).to.be.true;
     });
 
     it('scaffolds the configuration of cucumber timeouts in the default project', async () => {
         const tree = await testRunner.runSchematicAsync('ng-add', {}, appTree).toPromise();
-        expect(tree.exists('projects/defaultApp/features/support/setup.ts')).to.be.true;
+        expect(tree.exists('/projects/default-app/features/support/setup.ts')).to.be.true;
     });
 
     it('updates the e2e directory in the angular workspace', async () => {
         const tree = await testRunner.runSchematicAsync('ng-add', {}, appTree).toPromise();
         const workspace: experimental.workspace.WorkspaceSchema = JSON.parse(tree.readContent('./angular.json'));
-        expect(workspace.projects.defaultApp.architect!.lint.options.tsConfig).not.to.include('projects/defaultApp/e2e/tsconfig.json');
-        expect(workspace.projects.defaultApp.architect!.lint.options.tsConfig).to.include('projects/defaultApp/features/tsconfig.json');
-        expect(workspace.projects.defaultApp.architect!.e2e.options.protractorConfig.startsWith('projects/defaultApp/features')).to.be.true;
+        expect(workspace.projects.defaultApp.architect!.lint.options.tsConfig).not.to.include('projects/default-app/e2e/tsconfig.json');
+        expect(workspace.projects.defaultApp.architect!.lint.options.tsConfig).to.include('projects/default-app/features/tsconfig.json');
+        expect(workspace.projects.defaultApp.architect!.e2e.options.protractorConfig.startsWith('projects/default-app/features')).to.be.true;
     });
 });
 // tslint:enable: no-unused-expression

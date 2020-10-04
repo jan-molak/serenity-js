@@ -8,7 +8,6 @@
       "declaration": true,
       "module": "commonjs",
       "moduleResolution": "node",
-      "noEmitOnError": true,
       "noFallthroughCasesInSwitch": true,
       "noImplicitAny": true,
       "noImplicitThis": true,
@@ -20,13 +19,13 @@
       "skipLibCheck": true,
       "sourceMap": true,
       "strictNullChecks": true,
-      "target": "es6"
+      "target": "es2018"
     },
     "include": [
-      "schematics/**/*"
+      "schematics/**/*.ts"
     ],
     "exclude": [
-      "schematics/**/*.spec.ts",
+      "spec",
       "schematics/*/files/**/*"
     ]
   }
