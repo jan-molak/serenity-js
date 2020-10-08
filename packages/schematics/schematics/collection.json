@@ -1,9 +1,13 @@
 {
-    "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
     "schematics": {
       "ng-add": {
         "description": "Add serenity-js to the angular project.",
         "factory": "./ng-add/index#ngAdd"
+      },
+      "question": {
+        "description": "Generates a Question to query state",
+        "factory": "./question/index#question"
       }
     }
   } 

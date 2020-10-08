@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "SerenitJsQuestionSchematic",
+    "title": "Generates a Question used to query state.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the question",
+            "type": "string",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "Which name would you like to use for the question?"
+        },
+        "project": {
+            "description": "The name of the project to which the question will be added",
+            "type": "string"
+        },
+        "directory": {
+            "type": "string"
+        }
+    },
+    "required": ["name"]
+}

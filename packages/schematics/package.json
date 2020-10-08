@@ -37,11 +37,14 @@
     "@angular/cli": ">=8.0.0",
     "@angular-devkit/schematics-cli": ">=0.800.0",
     "@angular-devkit/schematics": ">=0.800.0",
+    "@serenity-js/core": "2.16.0",
     "@types/mocha": "^8.0.0"
   },
   "peerDependencies": {
     "@angular-devkit/core": ">=8.0.0",
-    "@angular-devkit/schematics": ">=0.800.0"
+    "@angular-devkit/schematics-cli": ">=0.800.0",
+    "@angular-devkit/schematics": ">=0.800.0",
+    "@serenity-js/core": "2.x"
   },
   "schematics": "./schematics/collection.json",
   "nyc": {

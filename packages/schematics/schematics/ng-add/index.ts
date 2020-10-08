@@ -138,8 +138,12 @@ function updateAngularWorkspace(options: SerenityJsAddOptions): Rule {
             if (project.architect?.lint) {
                 project.architect!.lint.options.tsConfig = project.architect!.lint.options.tsConfig.map((tsconfig: string) => tsconfig.replace(/e2e/, `${options.directory!}`));
             }
-            tree.overwrite('./angular.json', JSON.stringify(workspace, null, 2));
             rule = move(normalize(`${project.root}/e2e`), normalize(`${project.root}/${options.directory!}`));
+            if (!workspace.schematics) {
+                workspace.schematics = {};
+            }
+            workspace.schematics['@serenity-js/schematics:question'] = { directory: options.directory };
+            tree.overwrite('./angular.json', JSON.stringify(workspace, null, 2));
         }
         return rule;
     }

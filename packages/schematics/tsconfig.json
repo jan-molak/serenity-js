@@ -19,7 +19,12 @@
       "skipLibCheck": true,
       "sourceMap": true,
       "strictNullChecks": true,
-      "target": "es2018"
+      "target": "es2018",
+      "paths": {
+        "@angular/*": ["./node_modules/@angular/*"],
+        "@angular-devkit/*": ["./node_modules/@angular-devkit/*"],
+        "@serenity-js/*": ["../*"]
+      },
     },
     "include": [
       "schematics/**/*.ts"
