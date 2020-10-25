@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "SerenityJsAddSchematics",
+    "title": "Options for adding Serenity-JS to a project",
+    "type": "object",
+    "properties": {
+      "project": {
+        "description": "The name of the project to which your want to add serenity-js",
+        "type": "string",
+        "default": "."
+      },
+      "directory": {
+        "description": "The path within the project. Defaults to 'Feature' when using Cucumber.",
+        "type": "string"
+      },
+      "testFramework": {
+        "description": "The testing framework to use.",
+        "type": "string",
+        "default": "cucumber",
+        "x-prompt": "Which testing framework do you use?"
+      },
+      "browserIntegrationFramework": {
+        "description": "The browser integration framework to use.",
+        "type": "string",
+        "default": "protractor",
+        "x-prompt": "Which browser integration framework do you use?"
+      }
+     }
+  }

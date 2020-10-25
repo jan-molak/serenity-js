@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "lib": [
+        "es2018",
+        "dom"
+      ],
+      "declaration": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "noUnusedParameters": true,
+      "noUnusedLocals": true,
+      "rootDir": "schematics",
+      "outDir": "./lib/schematics",
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "strictNullChecks": true,
+      "target": "es2018",
+      "paths": {
+        "@angular/*": ["./node_modules/@angular/*"],
+        "@angular-devkit/*": ["./node_modules/@angular-devkit/*"],
+        "@serenity-js/*": ["../*"]
+      },
+    },
+    "include": [
+      "schematics/**/*.ts"
+    ],
+    "exclude": [
+      "spec",
+      "schematics/*/files/**/*"
+    ]
+  }

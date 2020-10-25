@@ -1,0 +1,7 @@
+import { Actor, Question } from '@serenity-js/core';
+
+export const <%= classify(name) %> = () => 
+    Question.about('', (actor: Actor) =>
+    // TODO: enter code to query state here
+    // see https://serenity-js.org/handbook/design/questions.html for more info
+    );
