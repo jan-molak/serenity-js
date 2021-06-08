@@ -1,11 +1,12 @@
 import { Task } from '@serenity-js/core';
 import { Clear, DoubleClick, Enter, Press } from '@serenity-js/protractor';
 import { protractor } from 'protractor';
+
 import { TodoList, TodoListItem } from './ui';
 
 export class RenameItem {
-    static called = (name: string) => ({
-        to: (newName: string) =>
+    static called = (name: string): {to: (newName: string) => Task} => ({
+        to: (newName: string): Task =>
             Task.where(`#actor renames an item called "${ name }" to "${ newName }"`,
                 DoubleClick.on(TodoListItem.label.of(TodoList.itemCalled(name))),
                 Clear.theValueOf(TodoList.editTodoInput),
